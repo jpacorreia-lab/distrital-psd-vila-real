@@ -65,44 +65,44 @@
     /* Content */
     .page-content { padding: 52px var(--px) 96px; background: var(--papel); }
 
-    /* Assembleia card */
-    .ar-card {
+    /* Stat strip */
+    .stat-strip { background: var(--branco); border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda); padding: 20px var(--px); }
+    .stat-strip-inner { display: flex; gap: 40px; align-items: center; }
+    .stat-n { font-family: 'Archivo', sans-serif; font-weight: 900; font-stretch: 120%; font-size: 28px; color: var(--laranja); }
+    .stat-l { font-size: 13px; font-weight: 600; color: var(--muted); margin-top: 3px; }
+
+    /* Grid */
+    .deputados-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 22px;
+      max-width: 700px;
+    }
+    .deputado-card {
       background: var(--branco); border: 1px solid var(--borda);
-      border-radius: 20px; overflow: hidden;
-      max-width: 680px;
-      box-shadow: 0 4px 20px rgba(35,31,32,.06);
+      border-radius: 16px; overflow: hidden;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
     }
-    .ar-card-header {
-      background: var(--grad);
-      padding: 28px 32px;
-      display: flex; align-items: center; gap: 18px;
+    .deputado-card:hover { border-color: var(--laranja); transform: translateY(-5px); box-shadow: 0 18px 40px rgba(35,31,32,.1); }
+    .deputado-foto { width: 100%; aspect-ratio: 3/4; background: #f0ebe3; overflow: hidden; position: relative; }
+    .deputado-foto img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .deputado-foto-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(150deg,#f0ebe3,#e8e0d6);
     }
-    .ar-tag {
-      font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 22px;
-      color: rgba(255,255,255,.9); background: rgba(255,255,255,.18);
-      width: 52px; height: 52px; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      flex: none;
-    }
-    .ar-header-text { color: #fff; }
-    .ar-orgao { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 20px; line-height: 1.1; }
-    .ar-circulo { font-size: 14px; color: rgba(255,255,255,.78); margin-top: 4px; }
-    .ar-body { padding: 28px 32px; }
-    .ar-body-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-    .deputado-list { display: flex; flex-direction: column; gap: 13px; }
-    .deputado-item {
-      display: flex; align-items: center; gap: 14px;
-      background: var(--papel); border: 1px solid var(--borda);
-      border-radius: 12px; padding: 14px 18px;
-    }
-    .deputado-num {
-      flex: none; width: 28px; height: 28px; border-radius: 8px;
+    .deputado-foto-placeholder svg { width: 64px; height: 64px; color: #c4b8a8; }
+    .deputado-num-badge {
+      position: absolute; top: 12px; left: 12px;
+      width: 28px; height: 28px; border-radius: 8px;
       background: var(--grad); color: #fff;
       font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 13px;
       display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,.25);
     }
-    .deputado-nome { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 16px; }
-    .note-italic { font-size: 13px; color: var(--muted2); margin-top: 20px; font-style: italic; }
+    .deputado-body { padding: 18px 18px 20px; border-top: 1px solid var(--borda); }
+    .deputado-nome { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; line-height: 1.2; margin-bottom: 5px; }
+    .deputado-cargo { font-size: 13px; color: var(--texto3); line-height: 1.4; }
+    .ar-chip { display: inline-block; margin-top: 12px; font-size: 10px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--laranja); border: 1px solid rgba(244,121,32,.4); padding: 4px 10px; border-radius: 999px; }
 
     /* Footer */
     .footer { background: var(--tinta); color: #cbbfb2; padding: 72px var(--px) 36px; }
@@ -123,6 +123,7 @@
     .footer-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 26px; font-size: 13px; color: #8a7d6f; }
 
     @media (max-width: 900px) { :root { --px: 20px; } .navbar-nav { display: none; } .nav-toggle { display: flex; } .footer-grid { grid-template-columns: 1fr; gap: 36px; } }
+    @media (max-width: 600px) { .deputados-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
     :focus-visible { outline: 2px solid var(--laranja); outline-offset: 3px; border-radius: 4px; }
   </style>
 </head>
@@ -173,22 +174,22 @@
   <div class="grad-bar" aria-hidden="true"></div>
 </div>
 
+<div class="stat-strip">
+  <div class="container stat-strip-inner">
+    <div>
+      <div class="stat-n">2</div>
+      <div class="stat-l">Deputados eleitos</div>
+    </div>
+    <div>
+      <div class="stat-n">XVII</div>
+      <div class="stat-l">Legislatura atual</div>
+    </div>
+  </div>
+</div>
+
 <div class="page-content">
   <div class="container">
-    <div class="ar-card">
-      <div class="ar-card-header">
-        <div class="ar-tag" aria-hidden="true">AR</div>
-        <div class="ar-header-text">
-          <div class="ar-orgao">Assembleia da República</div>
-          <div class="ar-circulo">Círculo Eleitoral de Vila Real</div>
-        </div>
-      </div>
-      <div class="ar-body">
-        <div class="ar-body-label">Deputados eleitos</div>
-        <div class="deputado-list" id="deputado-list"></div>
-        <p class="note-italic">Nomes a confirmar — envie a lista para completar.</p>
-      </div>
-    </div>
+    <div class="deputados-grid" id="deputados-grid"></div>
   </div>
 </div>
 
@@ -232,14 +233,38 @@
 </footer>
 
 <script>
-// Substituir pelos nomes reais quando disponíveis
-const nomes = ['Nome do/a deputado/a', 'Nome do/a deputado/a'];
-const list = document.getElementById('deputado-list');
-nomes.forEach((n, i) => {
-  list.innerHTML += `
-    <div class="deputado-item">
-      <div class="deputado-num" aria-hidden="true">${i+1}</div>
-      <div class="deputado-nome">${n}</div>
+const deputados = [
+  {
+    nome: 'Amílcar Almeida',
+    cargo: 'Deputado à Assembleia da República',
+    legislaturas: 'XVI e XVII Legislaturas',
+    foto: 'https://www.psd.pt/sites/default/files/styles/people_750x100_/public/2024-04/PSD-Am%C3%ADlcar%20Almeida.jpg'
+  },
+  {
+    nome: null,
+    cargo: 'Deputado/a à Assembleia da República',
+    legislaturas: 'XVII Legislatura',
+    foto: null
+  }
+];
+
+const grid = document.getElementById('deputados-grid');
+deputados.forEach((d, i) => {
+  const fotoHtml = d.foto
+    ? `<img src="${d.foto}" alt="Fotografia de ${d.nome}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'deputado-foto-placeholder\\'><svg viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'><path d=\\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\\'></path><circle cx=\\'12\\' cy=\\'7\\' r=\\'4\\'></circle></svg></div>'">`
+    : `<div class="deputado-foto-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>`;
+
+  grid.innerHTML += `
+    <div class="deputado-card">
+      <div class="deputado-foto">
+        ${fotoHtml}
+        <div class="deputado-num-badge" aria-hidden="true">${i+1}</div>
+      </div>
+      <div class="deputado-body">
+        <div class="deputado-nome">${d.nome ?? '<em style="color:var(--muted);font-style:normal;font-weight:500">A confirmar</em>'}</div>
+        <div class="deputado-cargo">${d.cargo}<br><span style="font-size:12px;color:var(--muted)">${d.legislaturas}</span></div>
+        <span class="ar-chip">PSD · Vila Real</span>
+      </div>
     </div>`;
 });
 
