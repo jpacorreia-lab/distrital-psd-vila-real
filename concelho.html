@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Concelho · PSD Distrital de Vila Real</title>
+  <meta name="description" content="Informação sobre o concelho — PSD Distrital de Vila Real.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --laranja: #F47920; --vermelho: #ED1C24;
+      --tinta:   #231F20; --papel:   #FBF8F3;
+      --branco:  #FFFFFF; --texto2:  #534B44;
+      --texto3:  #6B635A; --muted:   #8A7F73; --muted2: #A99B89;
+      --borda:   rgba(35,31,32,.08);
+      --grad:    linear-gradient(150deg, #F47920, #ED1C24);
+      --grad90:  linear-gradient(90deg,  #F47920, #ED1C24);
+      --max: 1260px; --px: 30px; --nav-h: 76px; --r-card: 14px; --r-pill: 999px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Hanken Grotesk', sans-serif; color: var(--tinta); background: var(--papel); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ::selection { background: var(--laranja); color: #fff; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--px); }
+
+    /* Navbar */
+    .navbar {
+      position: sticky; top: 0; z-index: 60;
+      background: rgba(251,248,243,.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(35,31,32,.07);
+    }
+    .navbar-inner { height: var(--nav-h); display: flex; align-items: center; gap: 26px; }
+    .navbar-brand { display: flex; align-items: center; gap: 13px; flex: none; }
+    .navbar-brand img { height: 34px; width: auto; }
+    .navbar-brand-text {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+      line-height: 1.15; border-left: 1px solid rgba(35,31,32,.15); padding-left: 13px;
+    }
+    .navbar-nav { margin-left: auto; display: flex; align-items: center; gap: 2px; }
+    .nav-link { font-size: 15px; font-weight: 600; color: #4a443e; padding: 9px 12px; border-radius: 8px; transition: color .18s, background .18s; }
+    .nav-link:hover { color: var(--laranja); background: rgba(244,121,32,.08); }
+    .btn-pill {
+      font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 14px;
+      color: #fff; background: var(--laranja); padding: 11px 20px;
+      border-radius: var(--r-pill); margin-left: 10px;
+      box-shadow: 0 8px 20px rgba(244,121,32,.32);
+      transition: background .18s; display: inline-block;
+    }
+    .btn-pill:hover { background: var(--tinta); }
+    @media (max-width: 900px) { :root { --px: 20px; } .navbar-nav { display: none; } }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(145deg, #1A1718 0%, #261E1B 55%, #2C2119 100%);
+      padding: 52px var(--px) 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.045) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #F47920, #ED1C24);
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Archivo', sans-serif; font-weight: 700;
+      font-size: 13px; letter-spacing: .04em; text-transform: uppercase;
+      color: rgba(255,255,255,.5); margin-bottom: 28px;
+      transition: color .18s;
+    }
+    .back-link:hover { color: var(--laranja); }
+    .nuts-chip {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--laranja); border: 1px solid rgba(244,121,32,.4);
+      padding: 5px 13px; border-radius: var(--r-pill); margin-bottom: 18px;
+    }
+    .hero-nome {
+      font-family: 'Archivo', sans-serif; font-weight: 900;
+      font-size: clamp(44px, 6vw, 80px); line-height: .95;
+      letter-spacing: -.02em; color: #fff; margin-bottom: 12px;
+    }
+    .hero-sub { font-size: 17px; color: rgba(255,255,255,.55); margin-bottom: 44px; }
+
+    /* Key stats strip */
+    .key-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .key-stat {
+      background: rgba(255,255,255,.06); padding: 20px 18px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 12px;
+      transition: background .2s, border-color .2s;
+    }
+    .key-stat:hover { background: rgba(255,255,255,.09); border-color: rgba(244,121,32,.3); }
+    .key-stat-val {
+      font-family: 'Archivo', sans-serif; font-weight: 900;
+      font-size: 28px; line-height: 1; letter-spacing: -.02em;
+      color: #fff; margin-bottom: 7px;
+    }
+    .key-stat-val.pos { color: #F8A55A; }
+    .key-stat-val.neg { color: #e87070; }
+    .key-stat-lbl {
+      font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,.38);
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    @media (max-width: 700px) {
+      .key-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Main content */
+    .main { padding: 56px var(--px); }
+
+    /* Destaque */
+    .destaque {
+      background: linear-gradient(135deg, rgba(244,121,32,.07), rgba(237,28,36,.04));
+      border: 1px solid rgba(244,121,32,.18);
+      border-radius: 16px; padding: 24px 28px; margin-bottom: 40px;
+      display: flex; align-items: flex-start; gap: 18px;
+      position: relative; overflow: hidden;
+    }
+    .destaque::before {
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
+      background: linear-gradient(180deg, #F47920, #ED1C24);
+    }
+    .destaque-icon {
+      flex: none; width: 40px; height: 40px; border-radius: 11px;
+      background: linear-gradient(150deg, #F47920, #ED1C24); color: #fff;
+      font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 16px rgba(244,121,32,.3);
+    }
+    .destaque-txt { font-size: 15.5px; line-height: 1.65; color: var(--texto2); }
+    .destaque-txt strong { font-weight: 700; color: var(--tinta); }
+
+    /* Section cards grid */
+    .sections-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    @media (max-width: 900px) { .sections-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 600px) and (max-width: 900px) { .sections-grid { grid-template-columns: 1fr 1fr; } }
+
+    .sec-card {
+      background: var(--branco); border: 1px solid var(--borda);
+      border-radius: 16px; padding: 26px 24px; overflow: hidden;
+      position: relative;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .sec-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #F47920, #ED1C24);
+    }
+    .sec-card:hover {
+      border-color: rgba(244,121,32,.3);
+      box-shadow: 0 12px 32px rgba(35,31,32,.08);
+      transform: translateY(-2px);
+    }
+    .sec-card-head {
+      display: flex; align-items: center; gap: 13px; margin-bottom: 22px;
+      padding-bottom: 18px; border-bottom: 1px solid var(--borda);
+    }
+    .sec-badge {
+      flex: none; width: 40px; height: 40px; border-radius: 12px;
+      background: var(--grad); color: #fff;
+      font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 16px rgba(244,121,32,.3);
+    }
+    .sec-title {
+      font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 18px; color: var(--tinta);
+    }
+    .sec-subtitle { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+    .data-row {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(35,31,32,.05);
+    }
+    .data-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .data-lbl { font-size: 13.5px; color: var(--muted); font-weight: 500; }
+    .data-val {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 14.5px; color: var(--tinta); text-align: right; flex: none;
+    }
+    .data-val.accent { color: var(--laranja); }
+    .data-val.pos { color: #bf5800; }
+    .data-val.neg { color: #a02020; }
+
+    /* Not found */
+    .not-found {
+      text-align: center; padding: 100px var(--px);
+    }
+    .not-found h1 {
+      font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 42px;
+      margin-bottom: 16px;
+    }
+    .not-found p { font-size: 17px; color: var(--muted); margin-bottom: 28px; }
+    .btn-back {
+      font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 15px;
+      color: #fff; background: var(--laranja); padding: 14px 26px;
+      border-radius: var(--r-pill); display: inline-block; transition: background .18s;
+    }
+    .btn-back:hover { background: var(--tinta); }
+
+    :focus-visible { outline: 2px solid var(--laranja); outline-offset: 3px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+<header class="navbar" role="banner">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-brand" aria-label="PSD Distrital de Vila Real — início">
+      <img src="assets/logo-psd.png" alt="Logótipo PSD">
+      <span class="navbar-brand-text">Distrital de<br>Vila Real</span>
+    </a>
+    <nav class="navbar-nav" aria-label="Navegação principal">
+      <a href="index.html#sobre"     class="nav-link">Distrital</a>
+      <a href="index.html#concelhos" class="nav-link">Concelhos</a>
+      <a href="index.html#equipa"    class="nav-link">Órgãos</a>
+      <a href="index.html#noticias"  class="nav-link">Notícias</a>
+      <a href="index.html#agenda"    class="nav-link">Agenda</a>
+      <a href="index.html#militante" class="btn-pill">Tornar-se militante →</a>
+    </nav>
+  </div>
+</header>
+
+<div id="page-content"></div>
+
+<script>
+/* ── Dados completos INE Dezembro 2025 ─────────────────── */
+const dados = {
+  'Vila Real': {
+    nuts: 'Douro', area: 378.9,
+    pop: 50043, dens: 132.1, envelh: 218.3, cresc: +0.2,
+    nasc: 305, obitos: 529,
+    hoteis: 20, hoteis_det: '3 hotéis', camas: 849,
+    hospedes: 51846, dormidas: 81701, receitas: '6.395', estrang: 24.8,
+    volneg: '1.862', vab: 443, trabalhadores: '18.692',
+    exportacoes: '7.775', importacoes: '79.756',
+    destaque: 'Capital distrital e maior cidade da região. Sede da UTAD, principal polo de serviços, saúde e ensino superior. Economia dominante: representa sozinha 41% do volume de negócios de todo o Douro NUTS III.',
+  },
+  'Alijó': {
+    nuts: 'Douro', area: 296.7,
+    pop: 10296, dens: 34.6, envelh: 396.3, cresc: -0.3,
+    nasc: 50, obitos: 141,
+    hoteis: 30, hoteis_det: null, camas: 615,
+    hospedes: 32163, dormidas: 55650, receitas: '7.882', estrang: 58.5,
+    volneg: '231', vab: 64, trabalhadores: '4.005',
+    exportacoes: '6.478', importacoes: null,
+    destaque: 'Território produtor de Vinho do Douro com marcas de renome internacional. Proporção de turistas estrangeiros de 58,5% — uma das mais elevadas do distrito, reflexo do enoturismo de alta gama.',
+  },
+  'Boticas': {
+    nuts: 'Alto Tâmega e Barroso', area: 321.7,
+    pop: 4832, dens: 15.0, envelh: 462.1, cresc: -1.1,
+    nasc: 24, obitos: 104,
+    hoteis: 4, hoteis_det: null, camas: 132,
+    hospedes: 9348, dormidas: 14489, receitas: '1.383', estrang: null,
+    volneg: '86', vab: null, trabalhadores: '1.270',
+    exportacoes: '1.547', importacoes: null,
+    destaque: 'Maior declínio populacional do distrito (−1,1% ao ano). Território do Barroso com forte identidade gastronómica — carne barrosã DOP — e crescente aposta no turismo de aldeia.',
+  },
+  'Chaves': {
+    nuts: 'Alto Tâmega e Barroso', area: 591.4,
+    pop: 37322, dens: 63.1, envelh: 361.8, cresc: -0.3,
+    nasc: 202, obitos: 584,
+    hoteis: 33, hoteis_det: '13 hotéis', camas: 1635,
+    hospedes: 128512, dormidas: 217665, receitas: '16.435', estrang: 24,
+    volneg: '815', vab: 239, trabalhadores: '11.265',
+    exportacoes: '37.202', importacoes: '68.284',
+    destaque: 'Principal polo turístico do Alto Tâmega. As Termas de Chaves e a posição de cidade fronteiriça com Espanha impulsionam 217 mil dormidas anuais — o maior valor fora de Vila Real. Exportações de 37M€, as mais altas da sub-região.',
+  },
+  'Mesão Frio': {
+    nuts: 'Douro', area: 26.6,
+    pop: 3449, dens: 129.4, envelh: 335.7, cresc: -1.0,
+    nasc: 12, obitos: 57,
+    hoteis: 9, hoteis_det: null, camas: 253,
+    hospedes: 20271, dormidas: 31659, receitas: '3.190', estrang: 24,
+    volneg: '54', vab: 40, trabalhadores: '1.210',
+    exportacoes: '17', importacoes: null,
+    destaque: 'Menor concelho do distrito em área e população, mas com uma oferta turística notável — 31 mil dormidas num território de apenas 26,6 km². Beneficia da localização no coração do Douro vinhateiro.',
+  },
+  'Mondim de Basto': {
+    nuts: 'Ave', area: 171.8,
+    pop: 6394, dens: 37.2, envelh: 326.8, cresc: -0.2,
+    nasc: 34, obitos: 87,
+    hoteis: 13, hoteis_det: '1 hotel', camas: null,
+    hospedes: null, dormidas: 58389, receitas: '3.351', estrang: null,
+    volneg: '108', vab: 34, trabalhadores: '1.679',
+    exportacoes: null, importacoes: null,
+    destaque: 'Único concelho do distrito inserido na NUTS III Ave. A Cascata do Fisgas de Ermelo e a Serra do Alvão são atrativos naturais de referência regional. Índice de envelhecimento mais favorável da sub-região.',
+  },
+  'Montalegre': {
+    nuts: 'Alto Tâmega e Barroso', area: 805.2,
+    pop: 9100, dens: 11.3, envelh: 550.6, cresc: -0.5,
+    nasc: 29, obitos: 177,
+    hoteis: 29, hoteis_det: '2 hotéis', camas: 516,
+    hospedes: 13847, dormidas: 22880, receitas: '1.321', estrang: null,
+    volneg: '113', vab: 33, trabalhadores: '2.563',
+    exportacoes: '765', importacoes: null,
+    destaque: 'Maior índice de envelhecimento do distrito (550,6) e menor densidade populacional (11,3 hab./km²). Território de grande dimensão integrado no Parque Natural do Gerês/Xurés, com forte potencial para ecoturismo e turismo de natureza.',
+  },
+  'Murça': {
+    nuts: 'Douro', area: 189.4,
+    pop: 5229, dens: 27.6, envelh: 449.1, cresc: -0.5,
+    nasc: 21, obitos: 109,
+    hoteis: 2, hoteis_det: null, camas: null,
+    hospedes: 1264, dormidas: 2964, receitas: '379', estrang: null,
+    volneg: '62', vab: 17, trabalhadores: '1.638',
+    exportacoes: '804', importacoes: null,
+    destaque: 'Oferta turística muito limitada (2.964 dormidas, as mais baixas do distrito). Receitas ambientais muito acima da média per capita, reflexo de aproveitamentos de energia renovável no território.',
+  },
+  'Peso da Régua': {
+    nuts: 'Douro', area: 94.8,
+    pop: 14275, dens: 150.5, envelh: 282.8, cresc: -0.9,
+    nasc: 83, obitos: 200,
+    hoteis: 20, hoteis_det: '4 hotéis', camas: 641,
+    hospedes: 42122, dormidas: 72604, receitas: '6.754', estrang: 37.1,
+    volneg: '307', vab: 74, trabalhadores: '4.900',
+    exportacoes: '2.459', importacoes: null,
+    destaque: 'Capital do Douro Vinhateiro e porta de entrada da Região Demarcada. Com 37,1% de hóspedes estrangeiros e 72 mil dormidas, é um dos principais destinos de enoturismo internacional do país.',
+  },
+  'Ribeira de Pena': {
+    nuts: 'Alto Tâmega e Barroso', area: 217.2,
+    pop: 5840, dens: 26.9, envelh: 348.5, cresc: -0.4,
+    nasc: 30, obitos: 97,
+    hoteis: 8, hoteis_det: '2 hotéis', camas: 357,
+    hospedes: 27415, dormidas: 44269, receitas: '3.015', estrang: null,
+    volneg: '150', vab: 48, trabalhadores: '1.970',
+    exportacoes: '1.908', importacoes: null,
+    destaque: 'Taxa de ocupação hoteleira de 36,2% — boa para a dimensão do concelho. A localização entre o Alvão e o Barroso favorece o turismo de natureza. Volume de negócios de 150M€ acima da média para concelhos desta dimensão.',
+  },
+  'Sabrosa': {
+    nuts: 'Douro', area: 156.8,
+    pop: 5627, dens: 35.9, envelh: 381.9, cresc: -0.1,
+    nasc: 30, obitos: 97,
+    hoteis: 19, hoteis_det: null, camas: 273,
+    hospedes: 19861, dormidas: 36124, receitas: '6.485', estrang: 75,
+    volneg: '111', vab: 37, trabalhadores: '1.878',
+    exportacoes: '9.937', importacoes: null,
+    destaque: '75% dos hóspedes são estrangeiros — o valor mais alto de todo o distrito. Enoturismo premium com receitas de 6,5M€ muito acima da média para a dimensão. Exportações de 9,9M€ demonstram o valor internacional dos seus vinhos. Terra de Fernão de Magalhães.',
+  },
+  'Santa Marta de Penaguião': {
+    nuts: 'Douro', area: 69.2,
+    pop: 5949, dens: 85.9, envelh: 388.2, cresc: -0.6,
+    nasc: 25, obitos: 88,
+    hoteis: 8, hoteis_det: '1 hotel', camas: 139,
+    hospedes: 4691, dormidas: 9135, receitas: '918', estrang: 59.4,
+    volneg: '69', vab: 30, trabalhadores: '2.212',
+    exportacoes: '981', importacoes: null,
+    destaque: '59,4% de hóspedes estrangeiros — 2.º valor mais alto do distrito. Território compacto inserido no Vale do Douro com vitivinicultura tradicional e potencial turístico ainda por desenvolver plenamente.',
+  },
+  'Valpaços': {
+    nuts: 'Alto Tâmega e Barroso', area: 548.9,
+    pop: 14532, dens: 26.5, envelh: 513.8, cresc: -0.4,
+    nasc: 69, obitos: 276,
+    hoteis: 5, hoteis_det: null, camas: 118,
+    hospedes: 4918, dormidas: 9265, receitas: '912', estrang: null,
+    volneg: '200', vab: 53, trabalhadores: '4.609',
+    exportacoes: '11.413', importacoes: null,
+    destaque: '2.º maior índice de envelhecimento do distrito (513,8). Exportações de 11,4M€ relevantes para a dimensão — setor agropecuário e alimentar de referência. Fumeiro, azeite e produtos DOP com crescente projeção.',
+  },
+  'Vila Pouca de Aguiar': {
+    nuts: 'Alto Tâmega e Barroso', area: 437.8,
+    pop: 11819, dens: 27.0, envelh: 445.1, cresc: +0.4,
+    nasc: 48, obitos: 177,
+    hoteis: 8, hoteis_det: '4 hotéis', camas: 313,
+    hospedes: 15065, dormidas: 30404, receitas: '2.238', estrang: null,
+    volneg: '295', vab: 130, trabalhadores: '3.455',
+    exportacoes: '26.828', importacoes: '26.908',
+    destaque: 'Único concelho do Alto Tâmega e Barroso com crescimento positivo (+0,4%). Base industrial sólida com exportações de 26,8M€ e importações de 26,9M€ — o maior fluxo comercial da sub-região. VAB de 130M€ muito acima da média.',
+  },
+};
+
+/* ── Helpers ───────────────────────────────────────────── */
+function h(tag, attrs, ...children) {
+  const el = document.createElement(tag);
+  if (attrs) Object.entries(attrs).forEach(([k, v]) => {
+    if (k === 'cls') el.className = v;
+    else if (k === 'html') el.innerHTML = v;
+    else el.setAttribute(k, v);
+  });
+  children.flat().forEach(c => {
+    if (c == null) return;
+    if (typeof c === 'string' || typeof c === 'number') {
+      el.appendChild(document.createTextNode(String(c)));
+    } else {
+      el.appendChild(c);
+    }
+  });
+  return el;
+}
+
+function fmt(n) {
+  if (n == null) return null;
+  return String(n).includes('.') || String(n).includes(',') ? n : Number(n).toLocaleString('pt-PT');
+}
+
+function dataRow(lbl, val, cls) {
+  if (val == null) return null;
+  return h('div', { cls: 'data-row' },
+    h('span', { cls: 'data-lbl' }, lbl),
+    h('span', { cls: 'data-val' + (cls ? ' ' + cls : '') }, String(val))
+  );
+}
+
+/* ── Render ────────────────────────────────────────────── */
+const params = new URLSearchParams(window.location.search);
+const nome   = params.get('c');
+const d      = nome ? dados[nome] : null;
+const wrap   = document.getElementById('page-content');
+
+if (!d) {
+  document.title = 'Concelho não encontrado · PSD Distrital de Vila Real';
+  wrap.innerHTML = `
+    <div class="not-found container">
+      <h1>Concelho não encontrado.</h1>
+      <p>O concelho pedido não existe ou o endereço está incorrecto.</p>
+      <a href="index.html#concelhos" class="btn-back">← Voltar ao distrito</a>
+    </div>`;
+} else {
+  document.title = nome + ' · PSD Distrital de Vila Real';
+
+  const isPos = d.cresc >= 0;
+  const crescStr = (isPos ? '+' : '') + d.cresc.toFixed(1).replace('.', ',') + '%';
+  const crescCls = isPos ? 'pos' : 'neg';
+
+  /* Hero */
+  const hero = h('section', { cls: 'hero', 'aria-labelledby': 'h-nome' });
+  const hCont = h('div', { cls: 'container' });
+  hCont.appendChild(h('a', { href: 'index.html#concelhos', cls: 'back-link', 'aria-label': 'Voltar ao distrito' }, '← Voltar ao distrito'));
+  hCont.appendChild(h('span', { cls: 'nuts-chip' }, 'NUTS III: ' + d.nuts));
+  hCont.appendChild(h('h1', { cls: 'hero-nome', id: 'h-nome' }, nome));
+  hCont.appendChild(h('p', { cls: 'hero-sub' }, fmt(d.pop) + ' habitantes · ' + d.area + ' km²'));
+
+  const ks = h('div', { cls: 'key-stats', role: 'list', 'aria-label': 'Indicadores chave' });
+  [
+    { val: fmt(d.pop),                 lbl: 'Habitantes',      cls: '' },
+    { val: (isPos ? '↑ ' : '↓ ') + crescStr, lbl: 'Crescimento anual', cls: crescCls },
+    { val: d.dens.toFixed(1).replace('.',','), lbl: 'Hab./km²',    cls: '' },
+    { val: Math.round(d.envelh),       lbl: 'Índice envelhecimento', cls: '' },
+  ].forEach(s => {
+    ks.appendChild(h('div', { cls: 'key-stat', role: 'listitem' },
+      h('div', { cls: 'key-stat-val ' + s.cls }, s.val),
+      h('div', { cls: 'key-stat-lbl' }, s.lbl)
+    ));
+  });
+  hCont.appendChild(ks);
+  hero.appendChild(hCont);
+  wrap.appendChild(hero);
+
+  /* Main */
+  const main = h('main', { cls: 'main container' });
+
+  /* Destaque */
+  const dest = h('div', { cls: 'destaque', role: 'note', 'aria-label': 'Destaque' });
+  dest.appendChild(h('div', { cls: 'destaque-icon', 'aria-hidden': 'true' }, '★'));
+  dest.appendChild(h('p', { cls: 'destaque-txt', html: d.destaque }));
+  main.appendChild(dest);
+
+  /* Sections grid */
+  const grid = h('div', { cls: 'sections-grid' });
+
+  /* — DEMOGRAFIA — */
+  const demSec = h('div', { cls: 'sec-card', role: 'region', 'aria-labelledby': 'sec-dem' });
+  demSec.appendChild(h('div', { cls: 'sec-card-head' },
+    h('div', { cls: 'sec-badge', 'aria-hidden': 'true' }, '👥'),
+    h('div', {},
+      h('div', { cls: 'sec-title', id: 'sec-dem' }, 'Demografia'),
+      h('div', { cls: 'sec-subtitle' }, 'Dados INE 2024')
+    )
+  ));
+  [
+    dataRow('População residente', fmt(d.pop) + ' hab.'),
+    dataRow('Densidade populacional', d.dens.toFixed(1).replace('.',',') + ' hab./km²'),
+    dataRow('Área', d.area + ' km²'),
+    dataRow('Crescimento populacional', (isPos ? '+' : '') + d.cresc.toFixed(1).replace('.',',') + '%', crescCls),
+    dataRow('Índice de envelhecimento', String(d.envelh).replace('.', ',')),
+    dataRow('Nados vivos (2024)', fmt(d.nasc)),
+    dataRow('Óbitos (2024)', fmt(d.obitos)),
+    dataRow('Saldo natural', fmt(d.nasc - d.obitos)),
+  ].forEach(r => r && demSec.appendChild(r));
+  grid.appendChild(demSec);
+
+  /* — TURISMO — */
+  const turSec = h('div', { cls: 'sec-card', role: 'region', 'aria-labelledby': 'sec-tur' });
+  turSec.appendChild(h('div', { cls: 'sec-card-head' },
+    h('div', { cls: 'sec-badge', 'aria-hidden': 'true' }, '🏨'),
+    h('div', {},
+      h('div', { cls: 'sec-title', id: 'sec-tur' }, 'Turismo'),
+      h('div', { cls: 'sec-subtitle' }, 'Estabelecimentos e dormidas')
+    )
+  ));
+  [
+    dataRow('Estabelecimentos hoteleiros', d.hoteis + (d.hoteis_det ? ' (' + d.hoteis_det + ')' : '')),
+    dataRow('Capacidade (camas)', fmt(d.camas)),
+    dataRow('Hóspedes', fmt(d.hospedes)),
+    dataRow('Dormidas', fmt(d.dormidas), 'accent'),
+    dataRow('Proveitos hoteleiros', d.receitas + ' mil €'),
+    dataRow('Hóspedes estrangeiros', d.estrang != null ? d.estrang + '%' : null),
+  ].forEach(r => r && turSec.appendChild(r));
+  grid.appendChild(turSec);
+
+  /* — ECONOMIA — */
+  const ecSec = h('div', { cls: 'sec-card', role: 'region', 'aria-labelledby': 'sec-ec' });
+  ecSec.appendChild(h('div', { cls: 'sec-card-head' },
+    h('div', { cls: 'sec-badge', 'aria-hidden': 'true' }, '📊'),
+    h('div', {},
+      h('div', { cls: 'sec-title', id: 'sec-ec' }, 'Economia'),
+      h('div', { cls: 'sec-subtitle' }, 'Volume de negócios e emprego')
+    )
+  ));
+  [
+    dataRow('Volume de negócios', d.volneg + 'M€', 'accent'),
+    dataRow('VAB', d.vab != null ? d.vab + 'M€' : null),
+    dataRow('Trabalhadores', fmt(d.trabalhadores)),
+    dataRow('Exportações', d.exportacoes != null ? d.exportacoes + ' mil €' : null),
+    dataRow('Importações', d.importacoes != null ? d.importacoes + ' mil €' : null),
+    dataRow('NUTS III', d.nuts),
+  ].forEach(r => r && ecSec.appendChild(r));
+  grid.appendChild(ecSec);
+
+  main.appendChild(grid);
+  wrap.appendChild(main);
+}
+</script>
+</body>
+</html>

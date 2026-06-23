@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PSD · Distrital de Vila Real</title>
+  <meta name="description" content="Comissão Política Distrital do PSD de Vila Real. Trás-os-Montes e Alto Douro.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;0,900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --laranja: #F47920;
+      --vermelho: #ED1C24;
+      --tinta:   #231F20;
+      --papel:   #FBF8F3;
+      --branco:  #FFFFFF;
+      --texto2:  #534B44;
+      --texto3:  #6B635A;
+      --muted:   #8A7F73;
+      --muted2:  #A99B89;
+      --borda:   rgba(35,31,32,.08);
+      --grad:    linear-gradient(150deg, #F47920, #ED1C24);
+      --grad90:  linear-gradient(90deg,  #F47920, #ED1C24);
+      --grad100: linear-gradient(100deg, #F47920, #ED1C24);
+      --max:     1260px;
+      --px:      30px;
+      --py:      104px;
+      --r-card:  14px;
+      --r-pill:  999px;
+      --nav-h:   76px;
+    }
+
+    /* ── Reset ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Hanken Grotesk', sans-serif;
+      color: var(--tinta);
+      background: var(--papel);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button, input, select, textarea { font-family: inherit; }
+    ::selection { background: var(--laranja); color: #fff; }
+    input::placeholder, textarea::placeholder { color: var(--muted2); }
+
+    /* ── Helpers ─────────────────────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--px); }
+    .kicker {
+      display: inline-block;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--laranja); margin-bottom: 16px;
+    }
+    .grad-bar {
+      width: 68px; height: 5px;
+      background: var(--grad90);
+      border-radius: 3px; margin-top: 26px;
+    }
+    .badge {
+      font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 13px;
+      color: #fff; background: var(--grad);
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 16px rgba(244,121,32,.3);
+    }
+    .placeholder-img {
+      background: linear-gradient(145deg, #ede7df 0%, #e0d9d1 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .placeholder-img span {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 11px; color: var(--muted2);
+      text-transform: uppercase; letter-spacing: .1em;
+    }
+
+    /* ── Animations ──────────────────────────────────────── */
+    @keyframes psdMarquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ticker-track { animation: none !important; }
+    }
+
+    /* ── Navbar ──────────────────────────────────────────── */
+    .navbar {
+      position: sticky; top: 0; z-index: 60;
+      background: rgba(251,248,243,.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(35,31,32,.07);
+    }
+    .navbar-inner {
+      height: var(--nav-h);
+      display: flex; align-items: center; gap: 26px;
+    }
+    .navbar-brand {
+      display: flex; align-items: center; gap: 13px;
+      flex: none;
+    }
+    .navbar-brand img { height: 34px; width: auto; }
+    .navbar-brand-text {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+      line-height: 1.15;
+      border-left: 1px solid rgba(35,31,32,.15);
+      padding-left: 13px;
+    }
+    .navbar-nav {
+      margin-left: auto;
+      display: flex; align-items: center; gap: 2px;
+    }
+    .nav-link {
+      font-size: 15px; font-weight: 600; color: #4a443e;
+      padding: 9px 12px; border-radius: 8px;
+      transition: color .18s, background .18s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--laranja);
+      background: rgba(244,121,32,.08);
+    }
+    .btn-pill {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 14px; letter-spacing: .01em;
+      color: #fff; background: var(--laranja);
+      padding: 11px 20px; border-radius: var(--r-pill);
+      margin-left: 10px;
+      box-shadow: 0 8px 20px rgba(244,121,32,.32);
+      transition: background .18s, box-shadow .18s, transform .18s;
+      display: inline-block;
+    }
+    .btn-pill:hover {
+      background: var(--tinta);
+      box-shadow: 0 8px 20px rgba(35,31,32,.25);
+      transform: translateY(-1px);
+    }
+    /* Hamburger */
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer;
+      padding: 8px; margin-left: auto;
+    }
+    .nav-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: var(--tinta); border-radius: 2px;
+      transition: transform .25s, opacity .25s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      display: none; flex-direction: column;
+      padding: 14px var(--px) 20px;
+      border-top: 1px solid var(--borda);
+      gap: 2px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 16px; font-weight: 600; color: #4a443e;
+      padding: 11px 14px; border-radius: 8px;
+      transition: color .18s, background .18s;
+    }
+    .mobile-nav a:hover { color: var(--laranja); background: rgba(244,121,32,.08); }
+    .mobile-nav .btn-pill { margin: 8px 0 0; text-align: center; }
+
+    /* ── Hero ────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(145deg, #1A1718 0%, #261E1B 55%, #2C2119 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.04) 1.5px, transparent 1.5px);
+      background-size: 28px 28px; pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #F47920, #ED1C24);
+    }
+    .hero-glow {
+      position: absolute; top: -120px; right: -80px;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,121,32,.13), transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      padding: 100px 0 84px;
+      position: relative; z-index: 1;
+      max-width: 840px;
+    }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13);
+      border-radius: var(--r-pill); padding: 8px 16px; margin-bottom: 30px;
+    }
+    .hero-pill-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--laranja); flex: none;
+    }
+    .hero-pill-text {
+      font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+    }
+    .hero-h1 {
+      font-family: 'Archivo', sans-serif; font-weight: 900; font-stretch: 120%;
+      font-size: clamp(58px, 8.5vw, 112px);
+      line-height: .92; letter-spacing: -.03em;
+      color: #fff; margin-bottom: 28px;
+    }
+    .hero-h1 .grad-text {
+      background: linear-gradient(100deg, #F47920, #ED1C24);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-lead {
+      font-size: 19px; line-height: 1.65; color: rgba(255,255,255,.58);
+      max-width: 580px; margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn-primary {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 16px; color: #fff; background: var(--laranja);
+      padding: 16px 32px; border-radius: var(--r-pill);
+      box-shadow: 0 12px 32px rgba(244,121,32,.38);
+      transition: background .18s, box-shadow .18s, transform .18s; display: inline-block;
+    }
+    .btn-primary:hover { background: #d95f00; box-shadow: 0 12px 32px rgba(244,121,32,.5); transform: translateY(-2px); }
+    .btn-secondary {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 16px; color: rgba(255,255,255,.8); background: transparent;
+      border: 1.5px solid rgba(255,255,255,.22);
+      padding: 16px 32px; border-radius: var(--r-pill);
+      transition: border-color .18s, color .18s, background .18s, transform .18s; display: inline-block;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,.55); color: #fff; background: rgba(255,255,255,.06); transform: translateY(-2px); }
+    /* Stats bar at bottom of hero */
+    .hero-stats-bar {
+      background: rgba(0,0,0,.22); border-top: 1px solid rgba(255,255,255,.07);
+      position: relative; z-index: 1;
+    }
+    .hero-stats-inner {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .hero-stat {
+      padding: 28px 32px;
+      border-right: 1px solid rgba(255,255,255,.07);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-n {
+      font-family: 'Archivo', sans-serif; font-weight: 900;
+      font-size: 38px; line-height: 1; letter-spacing: -.02em; color: #fff;
+    }
+    .hero-stat-n span { font-size: 18px; color: rgba(255,255,255,.42); }
+    .hero-stat-l {
+      font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,.36);
+      text-transform: uppercase; letter-spacing: .07em; margin-top: 8px;
+    }
+
+    /* ── Ticker ──────────────────────────────────────────── */
+    .ticker {
+      background: var(--tinta); overflow: hidden; padding: 15px 0;
+    }
+    .ticker-track {
+      display: flex; width: max-content;
+      animation: psdMarquee 34s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 14px; padding: 0 22px;
+    }
+    .ticker-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--laranja); flex: none;
+    }
+    .ticker-label {
+      font-family: 'Archivo', sans-serif; font-weight: 700;
+      font-size: 15px; letter-spacing: .03em; text-transform: uppercase;
+      color: #e8e0d6;
+    }
+
+    /* ── Section base ────────────────────────────────────── */
+    .section { scroll-margin-top: var(--nav-h); padding: var(--py) var(--px); }
+    .section-white { background: var(--branco); }
+    .section-papel  { background: var(--papel); }
+    .section-dark   { background: linear-gradient(135deg, #231F20 0%, #2e2724 55%, #3a2a1e 100%); }
+
+    .section-header {
+      display: flex; flex-wrap: wrap;
+      align-items: flex-end; justify-content: space-between;
+      gap: 20px; margin-bottom: 44px;
+    }
+    .section-h2 {
+      font-family: 'Archivo', sans-serif; font-weight: 900;
+      font-stretch: 112%; font-size: clamp(34px, 3.6vw, 50px);
+      line-height: 1.02; letter-spacing: -.01em;
+    }
+    .section-lead {
+      font-size: 16.5px; color: var(--texto3); max-width: 420px; margin-bottom: 6px;
+    }
+
+    /* ── Sobre ───────────────────────────────────────────── */
+    .sobre-grid {
+      display: grid; grid-template-columns: .82fr 1.18fr;
+      gap: 62px; align-items: start;
+    }
+    .sobre-valores {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .valor-card {
+      border: 1px solid var(--borda); border-radius: var(--r-card);
+      padding: 24px 22px; background: var(--papel);
+      transition: border-color .2s, transform .2s;
+    }
+    .valor-card:hover { border-color: rgba(244,121,32,.4); transform: translateY(-3px); }
+    .valor-badge {
+      width: 42px; height: 42px; background: var(--grad);
+      border-radius: 12px; margin-bottom: 16px;
+      font-family: 'Archivo', sans-serif; font-weight: 900;
+      color: #fff; font-size: 20px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .valor-h3 {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 18px; margin-bottom: 8px;
+    }
+    .valor-p { font-size: 14.5px; line-height: 1.55; color: var(--texto3); }
+
+    /* ── Concelhos ───────────────────────────────────────── */
+    .concelhos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 14px;
+    }
+    .concelho-card {
+      position: relative; display: block;
+      background: var(--branco); border: 1px solid rgba(35,31,32,.07);
+      border-radius: var(--r-card); padding: 20px; overflow: hidden;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .concelho-card:hover {
+      border-color: rgba(244,121,32,.35);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(35,31,32,.1);
+    }
+    .concelho-accent {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--grad90);
+    }
+    .concelho-card-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px; min-height: 18px;
+    }
+    .concelho-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--laranja);
+    }
+    .concelho-nome {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 17px; color: var(--tinta); line-height: 1.1;
+    }
+    .concelho-sub { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+    .concelho-hero {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; margin-top: 14px;
+    }
+    .concelho-pop {
+      font-family: 'Archivo', sans-serif; font-weight: 900;
+      font-size: 24px; color: var(--tinta); line-height: 1;
+      letter-spacing: -.02em;
+    }
+    .concelho-pop-lbl {
+      font-size: 11px; font-weight: 600; color: var(--muted); margin-left: 3px;
+    }
+    .cresc-chip {
+      flex: none;
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 11.5px; letter-spacing: .01em;
+      padding: 4px 10px; border-radius: var(--r-pill);
+    }
+    .cresc-pos {
+      background: rgba(244,121,32,.13); color: #bf5800;
+    }
+    .cresc-neg {
+      background: rgba(180,30,30,.08); color: #a02020;
+    }
+    .concelho-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px 8px; margin-top: 14px; padding-top: 13px;
+      border-top: 1px solid var(--borda);
+    }
+    .concelho-stat-val {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 13.5px; color: var(--tinta); line-height: 1;
+    }
+    .concelho-stat-lbl {
+      font-size: 9.5px; font-weight: 700; color: var(--muted2);
+      text-transform: uppercase; letter-spacing: .05em; margin-top: 3px;
+    }
+
+    /* ── Órgãos ──────────────────────────────────────────── */
+    .orgaos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .orgao-card {
+      position: relative; display: flex; flex-direction: column;
+      background: var(--papel); border: 1px solid var(--borda);
+      border-radius: 16px; padding: 26px 26px 22px;
+      transition: border-color .2s, transform .2s, box-shadow .2s, background .2s;
+      min-height: 188px;
+    }
+    .orgao-card:hover {
+      border-color: var(--laranja);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 38px rgba(35,31,32,.1), 0 0 0 1px rgba(244,121,32,.12);
+      background: var(--branco);
+    }
+    .orgao-card-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .orgao-badge { width: 38px; height: 38px; border-radius: 11px; }
+    .orgao-kicker {
+      font-size: 11px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: #b3a99c;
+    }
+    .orgao-h3 {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 21px; line-height: 1.12; margin-bottom: 8px;
+    }
+    .orgao-sub { font-size: 14.5px; line-height: 1.5; color: var(--texto3); margin-bottom: 18px; }
+    .orgao-link {
+      margin-top: auto;
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 14px; color: var(--laranja);
+    }
+
+    /* Sub-secções #autarcas / #deputados */
+    .sub-section {
+      margin-top: 64px; border-top: 1px solid var(--borda); padding-top: 48px;
+      scroll-margin-top: var(--nav-h);
+    }
+    .sub-section-header {
+      display: flex; flex-wrap: wrap; align-items: flex-end;
+      justify-content: space-between; gap: 14px; margin-bottom: 24px;
+    }
+    .sub-kicker {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--laranja); margin-bottom: 8px;
+    }
+    .sub-h3 {
+      font-family: 'Archivo', sans-serif; font-weight: 900; font-stretch: 108%;
+      font-size: clamp(26px, 2.6vw, 34px); line-height: 1.05;
+    }
+    .sub-lead { font-size: 15px; color: var(--muted); margin-bottom: 4px; }
+    .autarcas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 18px;
+    }
+    .autarca-card {
+      background: var(--papel); border: 1px solid var(--borda);
+      border-radius: 16px; overflow: hidden;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .autarca-card:hover {
+      border-color: var(--laranja);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(35,31,32,.08);
+    }
+    .autarca-foto {
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--branco);
+      overflow: hidden; position: relative;
+    }
+    .autarca-foto img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      display: block;
+    }
+    .autarca-body {
+      padding: 16px 16px 18px;
+      border-top: 1px solid var(--borda);
+    }
+    .autarca-nome {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 15.5px; line-height: 1.2; color: var(--tinta);
+      margin-bottom: 4px;
+    }
+    .autarca-cargo { font-size: 13px; color: var(--texto3); line-height: 1.35; }
+    .psd-chip {
+      display: inline-block; margin-top: 10px;
+      font-size: 10px; font-weight: 800; letter-spacing: .05em;
+      text-transform: uppercase; color: var(--laranja);
+      border: 1px solid rgba(244,121,32,.4); padding: 4px 9px; border-radius: var(--r-pill);
+    }
+    .deputados-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    }
+    .deputado-card {
+      background: var(--papel); border: 1px solid var(--borda);
+      border-radius: 16px; padding: 26px 26px 22px;
+      transition: border-color .2s, transform .2s;
+    }
+    .deputado-card:hover { border-color: var(--laranja); transform: translateY(-2px); }
+    .deputado-card-top {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 18px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--borda);
+    }
+    .deputado-badge {
+      flex: none; font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 12px;
+      color: #fff; background: var(--grad);
+      padding: 7px 11px; border-radius: 9px;
+    }
+    .deputado-orgao {
+      font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 17px;
+    }
+    .deputado-circulo { font-size: 13px; color: var(--muted); }
+    .deputado-list { display: flex; flex-direction: column; gap: 11px; }
+    .deputado-item { display: flex; align-items: center; gap: 12px; }
+    .deputado-bullet {
+      flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--laranja);
+    }
+    .deputado-nome { font-size: 15.5px; font-weight: 600; color: #3f3a35; }
+    .note-italic { font-size: 13px; color: var(--muted2); margin-top: 18px; font-style: italic; }
+
+    /* ── Notícias ────────────────────────────────────────── */
+    .noticias-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;
+    }
+    .noticia-card {
+      display: block; background: var(--branco);
+      border: 1px solid rgba(35,31,32,.07);
+      border-radius: 16px; overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .noticia-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(35,31,32,.1);
+    }
+    .noticia-img {
+      height: 188px; position: relative;
+    }
+    .noticia-img .placeholder-img { height: 100%; }
+    .noticia-cat {
+      position: absolute; top: 14px; left: 14px;
+      font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+      color: #fff; background: rgba(35,31,32,.85);
+      padding: 5px 11px; border-radius: var(--r-pill);
+    }
+    .noticia-body { padding: 22px 22px 24px; }
+    .noticia-data { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 10px; }
+    .noticia-h3 {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 20px; line-height: 1.2; margin-bottom: 10px;
+    }
+    .noticia-resumo { font-size: 14.5px; line-height: 1.55; color: var(--texto3); margin-bottom: 14px; }
+    .link-arrow {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 14px; color: var(--laranja);
+    }
+    .link-underline {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 15px; color: var(--tinta);
+      border-bottom: 2px solid var(--laranja); padding-bottom: 3px;
+      transition: color .18s;
+    }
+    .link-underline:hover { color: var(--laranja); }
+
+    /* ── Agenda ──────────────────────────────────────────── */
+    .agenda-grid {
+      display: grid; grid-template-columns: .8fr 1.2fr;
+      gap: 56px; align-items: start;
+    }
+    .btn-dark {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 15px; color: #fff; background: var(--tinta);
+      padding: 13px 24px; border-radius: var(--r-pill);
+      display: inline-block; transition: background .18s;
+    }
+    .btn-dark:hover { background: var(--laranja); }
+    .evento-list { display: flex; flex-direction: column; gap: 14px; }
+    .evento-card {
+      display: flex; align-items: center; gap: 22px;
+      background: var(--papel); border: 1px solid rgba(35,31,32,.07);
+      border-radius: var(--r-card); padding: 20px 24px;
+      transition: border-color .2s, transform .2s;
+    }
+    .evento-card:hover { border-color: var(--laranja); transform: translateX(4px); }
+    .evento-data { flex: none; text-align: center; width: 62px; }
+    .evento-dia {
+      font-family: 'Archivo', sans-serif; font-weight: 900;
+      font-stretch: 120%; font-size: 30px; line-height: 1; color: var(--laranja);
+    }
+    .evento-mes {
+      font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--muted); margin-top: 3px;
+    }
+    .evento-divider {
+      width: 1px; align-self: stretch; background: rgba(35,31,32,.1);
+    }
+    .evento-h3 {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 18px; margin-bottom: 5px;
+    }
+    .evento-local { font-size: 14px; color: var(--texto3); }
+
+    /* ── Militante ───────────────────────────────────────── */
+    .militante-section {
+      position: relative; overflow: hidden;
+    }
+    .militante-blob {
+      position: absolute; top: -120px; right: -80px;
+      width: 380px; height: 380px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,121,32,.22), transparent 68%);
+      pointer-events: none;
+    }
+    .militante-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center; position: relative;
+    }
+    .militante-kicker {
+      display: inline-block; font-size: 13px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: #F8B27A; margin-bottom: 18px;
+    }
+    .militante-h2 {
+      font-family: 'Archivo', sans-serif; font-weight: 900;
+      font-stretch: 118%; font-size: clamp(36px, 4.2vw, 58px);
+      line-height: .98; letter-spacing: -.01em; margin-bottom: 22px; color: #fff;
+    }
+    .militante-h2 span { color: var(--laranja); }
+    .militante-lead {
+      font-size: 18px; line-height: 1.6; color: rgba(255,255,255,.82);
+      max-width: 480px; margin-bottom: 30px;
+    }
+    .beneficio-list { display: flex; flex-direction: column; gap: 14px; }
+    .beneficio-item { display: flex; align-items: center; gap: 13px; }
+    .beneficio-check {
+      flex: none; width: 24px; height: 24px; border-radius: 50%;
+      background: var(--laranja); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px;
+    }
+    .beneficio-text { font-size: 16px; color: #ece4da; }
+
+    /* Form */
+    .form-card {
+      background: var(--branco); border-radius: 20px;
+      padding: 36px; box-shadow: 0 30px 60px rgba(0,0,0,.3);
+    }
+    .form-title {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 22px; margin-bottom: 6px;
+    }
+    .form-sub { font-size: 14.5px; color: var(--muted); margin-bottom: 22px; }
+    .form-fields { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group label {
+      font-size: 12px; font-weight: 700; letter-spacing: .04em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .form-input {
+      border: 1.5px solid #e7e0d6; border-radius: 10px;
+      padding: 13px 15px; font-size: 15px; color: var(--tinta);
+      outline: none; width: 100%;
+      transition: border-color .18s;
+      background: #fff;
+    }
+    .form-input:focus { border-color: var(--laranja); }
+    .form-input.error { border-color: var(--vermelho); }
+    .form-error { font-size: 12px; color: var(--vermelho); margin-top: 2px; display: none; }
+    .form-error.visible { display: block; }
+    select.form-input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7F73' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .btn-submit {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 16px; color: #fff; background: var(--laranja);
+      border: none; border-radius: var(--r-pill);
+      padding: 15px; cursor: pointer; margin-top: 4px;
+      width: 100%;
+      box-shadow: 0 10px 24px rgba(244,121,32,.32);
+      transition: background .18s;
+    }
+    .btn-submit:hover { background: var(--tinta); }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
+    .form-rgpd {
+      font-size: 12px; color: var(--muted2); text-align: center; margin-top: 2px;
+    }
+    /* Sucesso */
+    .form-success { text-align: center; padding: 36px 10px; }
+    .success-icon {
+      width: 62px; height: 62px; border-radius: 50%; background: var(--grad);
+      margin: 0 auto 22px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 28px; font-weight: 800;
+    }
+    .success-h3 {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 24px; margin-bottom: 10px;
+    }
+    .success-p { font-size: 15.5px; line-height: 1.55; color: var(--texto3); }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    .footer {
+      background: var(--tinta); color: #cbbfb2;
+      padding: 72px var(--px) 36px;
+      scroll-margin-top: var(--nav-h);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 44px; padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer-logo { height: 38px; width: auto; margin-bottom: 20px; }
+    .footer-desc { font-size: 15px; line-height: 1.6; max-width: 340px; margin-bottom: 18px; color: #a89c8e; }
+    .social-list { display: flex; gap: 10px; }
+    .social-btn {
+      width: 40px; height: 40px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.16);
+      display: flex; align-items: center; justify-content: center;
+      color: #e8e0d6; transition: background .18s, border-color .18s, color .18s;
+    }
+    .social-btn:hover { background: var(--laranja); border-color: var(--laranja); color: #fff; }
+    .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+    .footer-h4 {
+      font-family: 'Archivo', sans-serif; font-weight: 800;
+      font-size: 14px; letter-spacing: .05em; text-transform: uppercase;
+      color: #fff; margin-bottom: 18px;
+    }
+    .footer-nav { display: flex; flex-direction: column; gap: 11px; }
+    .footer-nav a { font-size: 15px; color: #a89c8e; transition: color .18s; }
+    .footer-nav a:hover { color: var(--laranja); }
+    .footer-contacts { display: flex; flex-direction: column; gap: 13px; font-size: 15px; color: #a89c8e; line-height: 1.5; }
+    .footer-contacts a { color: #a89c8e; transition: color .18s; }
+    .footer-contacts a:hover { color: var(--laranja); }
+    .footer-strong { color: #fff; font-weight: 600; }
+    .footer-bottom {
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 12px; padding-top: 26px;
+      font-size: 13px; color: #8a7d6f;
+    }
+
+    /* ── Responsivo ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      :root { --px: 20px; --py: 72px; }
+      .navbar-nav { display: none; }
+      .nav-toggle { display: flex; }
+      .hero-inner { padding: 72px 0 60px; }
+      .hero-stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .hero-stat { padding: 20px 22px; }
+      .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
+      .sobre-valores { grid-template-columns: 1fr; }
+      .agenda-grid { grid-template-columns: 1fr; gap: 40px; }
+      .militante-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .deputados-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      :root { --py: 56px; }
+      .hero-inner { padding: 56px 0 48px; }
+      .hero-h1 { font-size: clamp(44px, 11vw, 72px); }
+      .form-row { grid-template-columns: 1fr; }
+      .sobre-valores { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 400px) {
+      .sobre-valores { grid-template-columns: 1fr; }
+    }
+
+    /* ── Focus visible ───────────────────────────────────── */
+    :focus-visible {
+      outline: 2px solid var(--laranja);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ NAVBAR ═══════ -->
+<header class="navbar" role="banner">
+  <div class="container navbar-inner">
+    <a href="#topo" class="navbar-brand" aria-label="PSD Distrital de Vila Real — início">
+      <img src="assets/logo-psd.png" alt="Logótipo PSD">
+      <span class="navbar-brand-text">Distrital de<br>Vila Real</span>
+    </a>
+    <nav class="navbar-nav" aria-label="Navegação principal">
+      <a href="#sobre"    class="nav-link">Distrital</a>
+      <a href="#concelhos" class="nav-link">Concelhos</a>
+      <a href="#equipa"   class="nav-link">Órgãos</a>
+      <a href="#noticias" class="nav-link">Notícias</a>
+      <a href="#agenda"   class="nav-link">Agenda</a>
+      <a href="#militante" class="btn-pill">Tornar-se militante →</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação mobile">
+    <a href="#sobre">Distrital</a>
+    <a href="#concelhos">Concelhos</a>
+    <a href="#equipa">Órgãos</a>
+    <a href="#noticias">Notícias</a>
+    <a href="#agenda">Agenda</a>
+    <a href="#militante" class="btn-pill">Tornar-se militante →</a>
+  </nav>
+</header>
+
+<span id="topo" aria-hidden="true"></span>
+
+<!-- ═══════════════════════════════════ HERO ═════════ -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="hero-pill" aria-hidden="true">
+      <span class="hero-pill-dot"></span>
+      <span class="hero-pill-text">Distrital do PSD · Vila Real</span>
+    </div>
+    <h1 class="hero-h1" id="hero-heading">
+      Um distrito<br>inteiro a <span class="grad-text">avançar</span>.
+    </h1>
+    <p class="hero-lead">
+      A Distrital de Vila Real une os 14 concelhos num projeto de proximidade, desenvolvimento e oportunidade para Trás-os-Montes e o Alto Douro.
+    </p>
+    <div class="hero-btns">
+      <a href="#militante" class="btn-primary">Tornar-se militante →</a>
+      <a href="#sobre" class="btn-secondary">Conhecer a distrital</a>
+    </div>
+  </div>
+  <div class="hero-stats-bar" aria-label="Dados do distrito de Vila Real — fonte INE dezembro 2025">
+    <div class="container hero-stats-inner">
+      <div class="hero-stat">
+        <div class="hero-stat-n">14</div>
+        <div class="hero-stat-l">Concelhos</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">184<span>k</span></div>
+        <div class="hero-stat-l">Habitantes</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">7<span>/14</span></div>
+        <div class="hero-stat-l">Câmaras PSD</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">4.463<span>M€</span></div>
+        <div class="hero-stat-l">Vol. negócios</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ TICKER ═══════ -->
+<div class="ticker" aria-hidden="true" role="presentation">
+  <div class="ticker-track" id="ticker-track"></div>
+</div>
+
+<!-- ═══════════════════════════════════ SOBRE ════════ -->
+<section id="sobre" class="section section-white" aria-labelledby="sobre-heading">
+  <div class="container">
+    <div class="sobre-grid">
+      <div>
+        <span class="kicker">A Distrital</span>
+        <h2 class="section-h2" id="sobre-heading">Uma estrutura ao serviço de todo o distrito.</h2>
+        <div class="grad-bar" aria-hidden="true"></div>
+      </div>
+      <div>
+        <p style="font-size:19.5px;line-height:1.65;color:#3f3a35;margin-bottom:22px">
+          O PSD Distrital de Vila Real é a voz de um território que conhece os desafios do interior, mas que recusa resignar-se ao declínio.
+        </p>
+        <p style="font-size:17px;line-height:1.65;color:var(--texto3);margin-bottom:38px">
+          Dos concelhos de montanha às margens do Douro, defendemos uma visão de desenvolvimento assente na criação de riqueza, na valorização das pessoas e na afirmação de Trás-os-Montes e Alto Douro como uma região com futuro.
+        </p>
+        <div class="sobre-valores" id="sobre-valores"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ CONCELHOS ════ -->
+<section id="concelhos" class="section section-papel" aria-labelledby="concelhos-heading">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="kicker">O Distrito</span>
+        <h2 class="section-h2" id="concelhos-heading">14 concelhos, uma só voz.</h2>
+      </div>
+      <p class="section-lead">Cada concelho com a sua estrutura, todos no mesmo sentido. Encontre a sua concelhia.</p>
+    </div>
+    <div class="concelhos-grid" id="concelhos-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ ÓRGÃOS ═══════ -->
+<section id="equipa" class="section section-white" aria-labelledby="orgaos-heading">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="kicker">Órgãos Distritais</span>
+        <h2 class="section-h2" id="orgaos-heading">Órgãos, deputados e autarcas.</h2>
+      </div>
+      <p class="section-lead">Toda a informação sobre os órgãos, deputados e autarcas do PSD no distrito de Vila Real.</p>
+    </div>
+    <div class="orgaos-grid" id="orgaos-grid"></div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ NOTÍCIAS ═════ -->
+<section id="noticias" class="section section-papel" aria-labelledby="noticias-heading">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="kicker">Atualidade</span>
+        <h2 class="section-h2" id="noticias-heading">Notícias da distrital.</h2>
+      </div>
+      <a href="#noticias" class="link-underline">Ver todas →</a>
+    </div>
+    <div class="noticias-grid" id="noticias-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ AGENDA ═══════ -->
+<section id="agenda" class="section section-white" aria-labelledby="agenda-heading">
+  <div class="container">
+    <div class="agenda-grid">
+      <div>
+        <span class="kicker">Agenda</span>
+        <h2 class="section-h2" id="agenda-heading" style="margin-bottom:18px">Próximas iniciativas.</h2>
+        <p style="font-size:16.5px;line-height:1.6;color:var(--texto3);margin-bottom:26px">
+          Encontros, jornadas e ações de proximidade por todo o distrito. Participe.
+        </p>
+        <a href="#militante" class="btn-dark">Quero participar →</a>
+      </div>
+      <div class="evento-list" id="agenda-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ MILITANTE ════ -->
+<section id="militante" class="section section-dark militante-section" aria-labelledby="militante-heading">
+  <div class="militante-blob" aria-hidden="true"></div>
+  <div class="container">
+    <div class="militante-grid">
+      <div>
+        <span class="militante-kicker">Junte-se a nós</span>
+        <h2 class="militante-h2" id="militante-heading">
+          Faça parte do <span>futuro</span> do distrito.
+        </h2>
+        <p class="militante-lead">
+          Tornar-se militante do PSD em Vila Real é dar voz às suas ideias e contribuir para um distrito com mais oportunidades. Deixe os seus dados — entramos em contacto consigo.
+        </p>
+        <ul class="beneficio-list" aria-label="Benefícios de ser militante">
+          <li class="beneficio-item">
+            <span class="beneficio-check" aria-hidden="true">✓</span>
+            <span class="beneficio-text">Participar ativamente na vida do distrito</span>
+          </li>
+          <li class="beneficio-item">
+            <span class="beneficio-check" aria-hidden="true">✓</span>
+            <span class="beneficio-text">Contribuir com as suas ideias e propostas</span>
+          </li>
+          <li class="beneficio-item">
+            <span class="beneficio-check" aria-hidden="true">✓</span>
+            <span class="beneficio-text">Integrar uma rede de pessoas com ambição</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-card">
+        <!-- Estado de sucesso (oculto por defeito) -->
+        <div class="form-success" id="form-success" style="display:none" role="alert" aria-live="polite">
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <h3 class="success-h3">Pedido enviado!</h3>
+          <p class="success-p">Obrigado pelo seu interesse. A Distrital de Vila Real entrará em contacto consigo brevemente.</p>
+        </div>
+
+        <!-- Formulário -->
+        <div id="form-fields-wrap">
+          <h3 class="form-title">Pedido de adesão</h3>
+          <p class="form-sub">Preencha o formulário e juntamo-nos a si.</p>
+          <form class="form-fields" id="adesao-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fNome">Nome completo</label>
+                <input id="fNome" name="nome" type="text" class="form-input" placeholder="Maria da Silva" autocomplete="name" required>
+                <span class="form-error" id="fNome-err">Introduza o seu nome.</span>
+              </div>
+              <div class="form-group">
+                <label for="fIdade">Idade</label>
+                <input id="fIdade" name="idade" type="number" class="form-input" placeholder="35" min="16" max="120" required>
+                <span class="form-error" id="fIdade-err">Introduza a sua idade.</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fEmail">Email</label>
+              <input id="fEmail" name="email" type="email" class="form-input" placeholder="maria@exemplo.pt" autocomplete="email" required>
+              <span class="form-error" id="fEmail-err">Introduza um email válido.</span>
+            </div>
+            <div class="form-group">
+              <label for="fTel">Telemóvel</label>
+              <input id="fTel" name="tel" type="tel" class="form-input" placeholder="912 345 678" autocomplete="tel" required>
+              <span class="form-error" id="fTel-err">Introduza o seu telemóvel.</span>
+            </div>
+            <div class="form-group">
+              <label for="fConcelho">Concelho de residência</label>
+              <select id="fConcelho" name="concelho" class="form-input" required>
+                <option value="">Selecione o seu concelho</option>
+              </select>
+              <span class="form-error" id="fConcelho-err">Selecione o seu concelho.</span>
+            </div>
+            <button type="submit" class="btn-submit" id="btn-submit">Enviar pedido de adesão</button>
+            <p class="form-rgpd">Os seus dados são tratados de acordo com o RGPD.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ FOOTER ═══════ -->
+<footer id="contactos" class="footer" aria-labelledby="footer-heading">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/logo-psd-white.png" alt="PSD Distrital de Vila Real" class="footer-logo">
+        <p class="footer-desc">Comissão Política Distrital do Partido Social Democrata de Vila Real. Trás-os-Montes e Alto Douro.</p>
+        <div class="social-list" aria-label="Redes sociais">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-h4" id="footer-heading">Navegação</h4>
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+          <a href="#sobre">A Distrital</a>
+          <a href="#concelhos">Concelhos</a>
+          <a href="#equipa">Órgãos Distritais</a>
+          <a href="#noticias">Notícias</a>
+          <a href="#agenda">Agenda</a>
+        </nav>
+      </div>
+      <div>
+        <h4 class="footer-h4">Contactos</h4>
+        <address class="footer-contacts" style="font-style:normal">
+          <div>
+            <span class="footer-strong">Sede Distrital</span><br>
+            Avenida Carvalho Araújo, Vila Real
+          </div>
+          <a href="mailto:geral@psdvilareal.pt">geral@psdvilareal.pt</a>
+          <a href="tel:+351259000000">+351 259 000 000</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 PSD · Distrital de Vila Real. Todos os direitos reservados.</p>
+      <p>Partido Social Democrata</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Dados ───────────────────────────────────────────── */
+const concelhos = [
+  { nome: 'Vila Real',               pop: '50.043', cresc: '+0,2%', negocio: '1.862M€', envelh: '218' },
+  { nome: 'Alijó',                   pop: '10.296', cresc: '−0,3%', negocio: '231M€',   envelh: '396' },
+  { nome: 'Boticas',                 pop: '4.832',  cresc: '−1,1%', negocio: '86M€',    envelh: '462' },
+  { nome: 'Chaves',                  pop: '37.322', cresc: '−0,3%', negocio: '815M€',   envelh: '362' },
+  { nome: 'Mesão Frio',              pop: '3.449',  cresc: '−1,0%', negocio: '54M€',    envelh: '336' },
+  { nome: 'Mondim de Basto',         pop: '6.394',  cresc: '−0,2%', negocio: '108M€',   envelh: '327' },
+  { nome: 'Montalegre',              pop: '9.100',  cresc: '−0,5%', negocio: '113M€',   envelh: '551' },
+  { nome: 'Murça',                   pop: '5.229',  cresc: '−0,5%', negocio: '62M€',    envelh: '449' },
+  { nome: 'Peso da Régua',           pop: '14.275', cresc: '−0,9%', negocio: '307M€',   envelh: '283' },
+  { nome: 'Ribeira de Pena',         pop: '5.840',  cresc: '−0,4%', negocio: '150M€',   envelh: '349' },
+  { nome: 'Sabrosa',                 pop: '5.627',  cresc: '−0,1%', negocio: '111M€',   envelh: '382' },
+  { nome: 'Santa Marta de Penaguião',pop: '5.949',  cresc: '−0,6%', negocio: '69M€',    envelh: '388' },
+  { nome: 'Valpaços',                pop: '14.532', cresc: '−0,4%', negocio: '200M€',   envelh: '514' },
+  { nome: 'Vila Pouca de Aguiar',    pop: '11.819', cresc: '+0,4%', negocio: '295M€',   envelh: '445' }
+];
+
+const valores = [
+  { num: '01', t: 'Proximidade',   d: 'Decisões mais perto das pessoas, em cada concelho do distrito.' },
+  { num: '02', t: 'Desenvolvimento', d: 'Criar riqueza e oportunidades para fixar pessoas no interior.' },
+  { num: '03', t: 'Futuro',        d: 'Afirmar Trás-os-Montes e o Alto Douro como uma região com ambição.' }
+];
+
+const orgaos = [
+  { tag: 'AR',  kicker: 'Eleitos',      titulo: 'Deputados',                sub: 'Deputados à Assembleia da República',    href: 'deputados.html' },
+  { tag: 'CM',  kicker: 'Autarquias',   titulo: 'Presidentes de Câmara',    sub: 'Autarcas PSD do distrito de Vila Real',  href: 'autarcas.html' },
+  { tag: 'PC',  kicker: 'Estrutura',    titulo: 'Presidentes de Concelhias',sub: 'Líderes das 14 concelhias distritais',   href: 'concelhias.html' },
+  { tag: 'PSD', kicker: 'Distrital',    titulo: 'Órgãos Distritais PSD',    sub: 'Comissão Política e estrutura distrital',href: 'em-breve.html?s=%C3%93rg%C3%A3os+Distritais+PSD' },
+  { tag: 'JSD', kicker: 'Juventude',    titulo: 'Órgãos Distritais JSD',    sub: 'Juventude Social Democrata de Vila Real', href: 'em-breve.html?s=%C3%93rg%C3%A3os+Distritais+JSD' },
+  { tag: 'TSD', kicker: 'Trabalhadores',titulo: 'Órgãos Distritais TSD',    sub: 'Trabalhadores Social Democratas',        href: 'em-breve.html?s=%C3%93rg%C3%A3os+Distritais+TSD' },
+  { tag: 'OC',  kicker: 'Concelhos',    titulo: 'Órgãos Concelhios',        sub: '14 concelhos do distrito',               href: 'em-breve.html?s=%C3%93rg%C3%A3os+Concelhios' },
+  { tag: 'H',   kicker: 'Memória',      titulo: 'Histórico',                sub: 'Ex-presidentes e memória distrital',     href: 'em-breve.html?s=Hist%C3%B3rico' }
+];
+
+const autarcas = [
+  { nome: 'José Rodrigues Paredes', concelho: 'Alijó',              foto: 'assets/autarcas/01_alijo_jose_rodrigues_paredes.png' },
+  { nome: 'António Guilherme Pires',concelho: 'Boticas',            foto: 'assets/autarcas/02_boticas_antonio_guilherme_pires.png' },
+  { nome: 'Bruno Ferreira',         concelho: 'Mondim de Basto',    foto: 'assets/autarcas/03_mondim_de_basto_bruno_ferreira.png' },
+  { nome: 'Mário Artur Lopes',      concelho: 'Murça',              foto: 'assets/autarcas/04_murca_mario_artur_lopes.png' },
+  { nome: 'José Gonçalves',         concelho: 'Peso da Régua',      foto: 'assets/autarcas/05_peso_da_regua_jose_goncalves.png' },
+  { nome: 'Jorge Mata Pires',       concelho: 'Valpaços',           foto: 'assets/autarcas/06_valpacos_jorge_mata_pires.png' },
+  { nome: 'Ana Rita Dias',          concelho: 'Vila Pouca de Aguiar',foto: 'assets/autarcas/07_vila_pouca_de_aguiar_ana_rita_dias.png' }
+];
+
+const deputados = [
+  { tag: 'AR', orgao: 'Assembleia da República', circulo: 'Círculo de Vila Real',
+    nomes: ['Nome do/a deputado/a', 'Nome do/a deputado/a'] },
+  { tag: 'PE', orgao: 'Parlamento Europeu', circulo: 'Eleitos pelo PSD',
+    nomes: ['Nome do/a eurodeputado/a'] }
+];
+
+const noticias = [
+  { cat: 'Distrital',  data: '12 Junho 2026', titulo: 'Distrital reúne autarcas dos 14 concelhos',   resumo: 'Encontro definiu prioridades para o desenvolvimento do interior e do Alto Douro.' },
+  { cat: 'Juventude',  data: '04 Junho 2026', titulo: 'JSD dinamiza jornadas em Chaves',               resumo: 'Jovens social-democratas debateram o futuro do território transmontano.' },
+  { cat: 'Território', data: '28 Maio 2026',  titulo: 'Proposta para a coesão do Douro',               resumo: 'Distrital apresenta medidas para valorizar a região demarcada e o turismo.' }
+];
+
+const agenda = [
+  { dia: '28', mes: 'Jun', titulo: 'Encontro Distrital de Militantes',    local: 'Vila Real',            hora: '15h00' },
+  { dia: '05', mes: 'Jul', titulo: 'Visita às concelhias do Barroso',     local: 'Montalegre · Boticas', hora: '10h00' },
+  { dia: '12', mes: 'Jul', titulo: 'Conversas sobre o Interior',          local: 'Chaves',               hora: '18h30' },
+  { dia: '19', mes: 'Jul', titulo: 'Ação de proximidade no Douro',        local: 'Peso da Régua',        hora: '11h00' }
+];
+
+/* ── Render helpers ──────────────────────────────────── */
+function h(tag, attrs, ...children) {
+  const el = document.createElement(tag);
+  if (attrs) Object.entries(attrs).forEach(([k, v]) => {
+    if (k === 'cls') el.className = v;
+    else if (k === 'html') el.innerHTML = v;
+    else el.setAttribute(k, v);
+  });
+  children.flat().forEach(c => {
+    if (c == null) return;
+    el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+  });
+  return el;
+}
+
+/* Ticker */
+(function buildTicker() {
+  const track = document.getElementById('ticker-track');
+  const items = [...concelhos, ...concelhos]; // duplicate for seamless loop
+  items.forEach(c => {
+    const span = document.createElement('span');
+    span.className = 'ticker-item';
+    span.innerHTML = `<span class="ticker-dot"></span><span class="ticker-label">${c.nome}</span>`;
+    track.appendChild(span);
+  });
+})();
+
+/* Valores */
+(function buildValores() {
+  const grid = document.getElementById('sobre-valores');
+  valores.forEach(v => {
+    grid.appendChild(h('div', { cls: 'valor-card' },
+      h('div', { cls: 'valor-badge', 'aria-hidden': 'true' }, v.num),
+      h('h3',  { cls: 'valor-h3' }, v.t),
+      h('p',   { cls: 'valor-p'  }, v.d)
+    ));
+  });
+})();
+
+/* Concelhos grid + select */
+(function buildConcelhos() {
+  const grid   = document.getElementById('concelhos-grid');
+  const select = document.getElementById('fConcelho');
+  concelhos.forEach(c => {
+    const isPos = c.cresc.startsWith('+');
+    const card = h('a', { href: 'concelho.html?c=' + encodeURIComponent(c.nome), cls: 'concelho-card', 'aria-label': c.nome + ' — Concelhia do PSD' });
+
+    card.appendChild(h('div', { cls: 'concelho-accent', 'aria-hidden': 'true' }));
+    card.appendChild(h('div', { cls: 'concelho-card-top' },
+      h('span', { cls: 'concelho-dot', 'aria-hidden': 'true' })
+    ));
+    card.appendChild(h('div', { cls: 'concelho-nome' }, c.nome));
+    card.appendChild(h('div', { cls: 'concelho-sub'  }, 'Concelhia do PSD'));
+
+    card.appendChild(h('div', { cls: 'concelho-hero' },
+      h('div', {},
+        h('span', { cls: 'concelho-pop' }, c.pop),
+        h('span', { cls: 'concelho-pop-lbl', 'aria-label': 'habitantes' }, ' hab.')
+      ),
+      h('span', { cls: 'cresc-chip ' + (isPos ? 'cresc-pos' : 'cresc-neg'), 'aria-label': 'crescimento ' + c.cresc },
+        (isPos ? '↑ ' : '↓ ') + c.cresc
+      )
+    ));
+
+    const stats = h('div', { cls: 'concelho-stats', 'aria-label': 'Dados INE 2024' });
+    [
+      { val: c.negocio, lbl: 'Negócios' },
+      { val: c.envelh,  lbl: 'Envelh.'        }
+    ].forEach(s => {
+      stats.appendChild(h('div', {},
+        h('div', { cls: 'concelho-stat-val' }, s.val),
+        h('div', { cls: 'concelho-stat-lbl' }, s.lbl)
+      ));
+    });
+    card.appendChild(stats);
+    grid.appendChild(card);
+
+    const opt = document.createElement('option');
+    opt.value = c.nome;
+    opt.textContent = c.nome;
+    select.appendChild(opt);
+  });
+})();
+
+/* Órgãos */
+(function buildOrgaos() {
+  const grid = document.getElementById('orgaos-grid');
+  orgaos.forEach(o => {
+    grid.appendChild(h('a', { cls: 'orgao-card', href: o.href },
+      h('div', { cls: 'orgao-card-top' },
+        h('div', { cls: 'orgao-badge badge', 'aria-hidden': 'true', style: 'width:38px;height:38px;border-radius:11px' }, o.tag),
+        h('span', { cls: 'orgao-kicker' }, o.kicker)
+      ),
+      h('h3',  { cls: 'orgao-h3'  }, o.titulo),
+      h('p',   { cls: 'orgao-sub' }, o.sub),
+      h('span',{ cls: 'orgao-link', 'aria-hidden': 'true' }, 'Ver mais →')
+    ));
+  });
+})();
+
+
+/* Notícias */
+(function buildNoticias() {
+  const grid = document.getElementById('noticias-grid');
+  noticias.forEach(n => {
+    const card = h('a', { href: '#noticias', cls: 'noticia-card', 'aria-label': n.titulo });
+    const imgWrap = h('div', { cls: 'noticia-img' });
+    const ph = h('div', { cls: 'placeholder-img', style: 'height:100%' });
+    ph.appendChild(h('span', { 'aria-hidden': 'true' }, 'imagem'));
+    imgWrap.appendChild(ph);
+    imgWrap.appendChild(h('span', { cls: 'noticia-cat', 'aria-label': `Categoria: ${n.cat}` }, n.cat));
+    card.appendChild(imgWrap);
+    card.appendChild(h('div', { cls: 'noticia-body' },
+      h('div',  { cls: 'noticia-data'   }, n.data),
+      h('h3',   { cls: 'noticia-h3'     }, n.titulo),
+      h('p',    { cls: 'noticia-resumo' }, n.resumo),
+      h('span', { cls: 'link-arrow', 'aria-hidden': 'true' }, 'Ler mais →')
+    ));
+    grid.appendChild(card);
+  });
+})();
+
+/* Agenda */
+(function buildAgenda() {
+  const list = document.getElementById('agenda-list');
+  agenda.forEach(e => {
+    list.appendChild(h('div', { cls: 'evento-card', role: 'article' },
+      h('div', { cls: 'evento-data', 'aria-label': `${e.dia} de ${e.mes}` },
+        h('div', { cls: 'evento-dia', 'aria-hidden': 'true' }, e.dia),
+        h('div', { cls: 'evento-mes', 'aria-hidden': 'true' }, e.mes)
+      ),
+      h('div', { cls: 'evento-divider', 'aria-hidden': 'true' }),
+      h('div', { style: 'flex:1' },
+        h('h3',  { cls: 'evento-h3'    }, e.titulo),
+        h('div', { cls: 'evento-local' }, `${e.local} · ${e.hora}`)
+      )
+    ));
+  });
+})();
+
+/* ── Formulário com validação ────────────────────────── */
+const form    = document.getElementById('adesao-form');
+const success = document.getElementById('form-success');
+const wrap    = document.getElementById('form-fields-wrap');
+
+function showError(id, show) {
+  const input = document.getElementById(id);
+  const err   = document.getElementById(id + '-err');
+  if (!input || !err) return;
+  input.classList.toggle('error', show);
+  err.classList.toggle('visible', show);
+}
+
+function validateEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+function validateTel(v)   { return /^[\d\s\+\-\(\)]{9,}$/.test(v.trim()); }
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  let valid = true;
+
+  const nome    = document.getElementById('fNome').value.trim();
+  const idade   = document.getElementById('fIdade').value.trim();
+  const email   = document.getElementById('fEmail').value.trim();
+  const tel     = document.getElementById('fTel').value.trim();
+  const concelho= document.getElementById('fConcelho').value;
+
+  showError('fNome',    !nome);              if (!nome)    valid = false;
+  showError('fIdade',   !idade);             if (!idade)   valid = false;
+  showError('fEmail',   !validateEmail(email)); if (!validateEmail(email)) valid = false;
+  showError('fTel',     !validateTel(tel));  if (!validateTel(tel))  valid = false;
+  showError('fConcelho',!concelho);          if (!concelho) valid = false;
+
+  if (!valid) return;
+
+  const btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'A enviar…';
+
+  // Simula envio (substituir por fetch real)
+  setTimeout(() => {
+    wrap.style.display = 'none';
+    success.style.display = 'block';
+  }, 900);
+});
+
+/* Limpar erro ao editar */
+['fNome','fIdade','fEmail','fTel','fConcelho'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', () => showError(id, false));
+});
+
+/* ── Navbar: active link por scroll ──────────────────── */
+const sections = ['sobre','concelhos','equipa','noticias','agenda','militante'];
+const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const id = entry.target.id;
+      const active = document.querySelector(`.navbar-nav a[href="#${id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+});
+
+/* ── Menu mobile ─────────────────────────────────────── */
+const toggle    = document.querySelector('.nav-toggle');
+const mobileNav = document.getElementById('mobile-nav');
+
+toggle.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  toggle.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', open);
+});
+
+mobileNav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
+</body>
+</html>

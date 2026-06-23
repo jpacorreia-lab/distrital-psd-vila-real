@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presidentes de Câmara PSD · Distrito de Vila Real</title>
+  <meta name="description" content="Os 7 presidentes de câmara eleitos pelo PSD no distrito de Vila Real nas autárquicas de 2025.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --laranja: #F47920; --vermelho: #ED1C24; --tinta: #231F20;
+      --papel: #FBF8F3;   --branco: #FFFFFF;  --texto2: #534B44;
+      --texto3: #6B635A;  --muted: #8A7F73;   --muted2: #A99B89;
+      --borda: rgba(35,31,32,.08);
+      --grad: linear-gradient(150deg,#F47920,#ED1C24);
+      --grad90: linear-gradient(90deg,#F47920,#ED1C24);
+      --max: 1260px; --px: 30px; --nav-h: 76px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Hanken Grotesk', sans-serif; color: var(--tinta); background: var(--papel); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    ::selection { background: var(--laranja); color: #fff; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--px); }
+
+    /* Navbar */
+    .navbar { position: sticky; top: 0; z-index: 60; background: rgba(251,248,243,.88); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(35,31,32,.07); }
+    .navbar-inner { height: var(--nav-h); display: flex; align-items: center; gap: 26px; }
+    .navbar-brand { display: flex; align-items: center; gap: 13px; flex: none; }
+    .navbar-brand img { height: 34px; width: auto; }
+    .navbar-brand-text { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; line-height: 1.15; border-left: 1px solid rgba(35,31,32,.15); padding-left: 13px; }
+    .navbar-nav { margin-left: auto; display: flex; align-items: center; gap: 2px; }
+    .nav-link { font-size: 15px; font-weight: 600; color: #4a443e; padding: 9px 12px; border-radius: 8px; transition: color .18s, background .18s; }
+    .nav-link:hover { color: var(--laranja); background: rgba(244,121,32,.08); }
+    .btn-pill { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 14px; color: #fff; background: var(--laranja); padding: 11px 20px; border-radius: 999px; margin-left: 10px; box-shadow: 0 8px 20px rgba(244,121,32,.32); transition: background .18s, transform .18s; display: inline-block; }
+    .btn-pill:hover { background: var(--tinta); transform: translateY(-1px); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; margin-left: auto; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--tinta); border-radius: 2px; transition: transform .25s, opacity .25s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav { display: none; flex-direction: column; padding: 14px var(--px) 20px; border-top: 1px solid var(--borda); gap: 2px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 16px; font-weight: 600; color: #4a443e; padding: 11px 14px; border-radius: 8px; transition: color .18s, background .18s; }
+    .mobile-nav a:hover { color: var(--laranja); background: rgba(244,121,32,.08); }
+    .mobile-nav .btn-pill { margin: 8px 0 0; text-align: center; }
+
+    /* Breadcrumb */
+    .breadcrumb { padding: 18px 0 0; font-size: 13.5px; color: var(--muted); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--muted); transition: color .18s; }
+    .breadcrumb a:hover { color: var(--laranja); }
+    .breadcrumb-sep { color: var(--muted2); }
+    .breadcrumb-current { color: var(--tinta); font-weight: 600; }
+
+    /* Page hero */
+    .page-hero { padding: 36px var(--px) 64px; }
+    .page-kicker { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--laranja); margin-bottom: 14px; }
+    .page-h1 { font-family: 'Archivo', sans-serif; font-weight: 900; font-stretch: 112%; font-size: clamp(36px, 4vw, 58px); line-height: 1; letter-spacing: -.02em; margin-bottom: 16px; }
+    .page-lead { font-size: 18px; line-height: 1.6; color: var(--texto2); max-width: 580px; }
+    .grad-bar { width: 68px; height: 5px; background: var(--grad90); border-radius: 3px; margin-top: 22px; }
+
+    /* Stat strip */
+    .stat-strip { background: var(--branco); border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda); padding: 20px var(--px); margin-bottom: 0; }
+    .stat-strip-inner { display: flex; gap: 40px; align-items: center; }
+    .stat-n { font-family: 'Archivo', sans-serif; font-weight: 900; font-stretch: 120%; font-size: 28px; color: var(--laranja); }
+    .stat-l { font-size: 13px; font-weight: 600; color: var(--muted); margin-top: 3px; }
+
+    /* Grid */
+    .page-content { padding: 52px var(--px) 96px; background: var(--papel); }
+    .autarcas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 22px;
+    }
+    .autarca-card {
+      background: var(--branco); border: 1px solid var(--borda);
+      border-radius: 16px; overflow: hidden;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .autarca-card:hover { border-color: var(--laranja); transform: translateY(-5px); box-shadow: 0 18px 40px rgba(35,31,32,.1); }
+    .autarca-foto { width: 100%; aspect-ratio: 3/4; background: #f0ebe3; overflow: hidden; }
+    .autarca-foto img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .autarca-body { padding: 18px 18px 20px; border-top: 1px solid var(--borda); }
+    .autarca-nome { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; line-height: 1.2; margin-bottom: 5px; }
+    .autarca-cargo { font-size: 13px; color: var(--texto3); line-height: 1.4; }
+    .psd-chip { display: inline-block; margin-top: 12px; font-size: 10px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--laranja); border: 1px solid rgba(244,121,32,.4); padding: 4px 10px; border-radius: 999px; }
+
+    /* Footer */
+    .footer { background: var(--tinta); color: #cbbfb2; padding: 72px var(--px) 36px; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 44px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .footer-logo { height: 38px; width: auto; margin-bottom: 20px; }
+    .footer-desc { font-size: 15px; line-height: 1.6; max-width: 340px; margin-bottom: 18px; color: #a89c8e; }
+    .social-list { display: flex; gap: 10px; }
+    .social-btn { width: 40px; height: 40px; border-radius: 10px; border: 1px solid rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center; color: #e8e0d6; transition: background .18s, border-color .18s, color .18s; }
+    .social-btn:hover { background: var(--laranja); border-color: var(--laranja); color: #fff; }
+    .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+    .footer-h4 { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: .05em; text-transform: uppercase; color: #fff; margin-bottom: 18px; }
+    .footer-nav { display: flex; flex-direction: column; gap: 11px; }
+    .footer-nav a { font-size: 15px; color: #a89c8e; transition: color .18s; }
+    .footer-nav a:hover { color: var(--laranja); }
+    .footer-contacts { display: flex; flex-direction: column; gap: 13px; font-size: 15px; color: #a89c8e; line-height: 1.5; }
+    .footer-contacts a { color: #a89c8e; transition: color .18s; }
+    .footer-contacts a:hover { color: var(--laranja); }
+    .footer-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 26px; font-size: 13px; color: #8a7d6f; }
+
+    @media (max-width: 900px) {
+      :root { --px: 20px; }
+      .navbar-nav { display: none; }
+      .nav-toggle { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 600px) {
+      .autarcas-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    }
+    :focus-visible { outline: 2px solid var(--laranja); outline-offset: 3px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+<header class="navbar" role="banner">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-brand" aria-label="PSD Distrital de Vila Real — início">
+      <img src="assets/logo-psd.png" alt="Logótipo PSD">
+      <span class="navbar-brand-text">Distrital de<br>Vila Real</span>
+    </a>
+    <nav class="navbar-nav" aria-label="Navegação principal">
+      <a href="index.html#sobre"     class="nav-link">Distrital</a>
+      <a href="index.html#concelhos" class="nav-link">Concelhos</a>
+      <a href="index.html#equipa"    class="nav-link active">Órgãos</a>
+      <a href="index.html#noticias"  class="nav-link">Notícias</a>
+      <a href="index.html#agenda"    class="nav-link">Agenda</a>
+      <a href="index.html#militante" class="btn-pill">Tornar-se militante →</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html#sobre">Distrital</a>
+    <a href="index.html#concelhos">Concelhos</a>
+    <a href="index.html#equipa">Órgãos</a>
+    <a href="index.html#noticias">Notícias</a>
+    <a href="index.html#agenda">Agenda</a>
+    <a href="index.html#militante" class="btn-pill">Tornar-se militante →</a>
+  </nav>
+</header>
+
+<div class="container">
+  <nav class="breadcrumb" aria-label="Localização">
+    <a href="index.html">Início</a>
+    <span class="breadcrumb-sep" aria-hidden="true">›</span>
+    <a href="index.html#equipa">Órgãos</a>
+    <span class="breadcrumb-sep" aria-hidden="true">›</span>
+    <span class="breadcrumb-current">Presidentes de Câmara</span>
+  </nav>
+</div>
+
+<div class="page-hero container">
+  <span class="page-kicker">Autarquias · 2025–2029</span>
+  <h1 class="page-h1">Presidentes de Câmara PSD</h1>
+  <p class="page-lead">O PSD elegeu 7 presidentes de câmara no distrito de Vila Real nas autárquicas de outubro de 2025.</p>
+  <div class="grad-bar" aria-hidden="true"></div>
+</div>
+
+<div class="stat-strip">
+  <div class="container stat-strip-inner">
+    <div>
+      <div class="stat-n">7</div>
+      <div class="stat-l">Câmaras PSD</div>
+    </div>
+    <div>
+      <div class="stat-n">14</div>
+      <div class="stat-l">Concelhos no distrito</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="container">
+    <div class="autarcas-grid" id="autarcas-grid"></div>
+  </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/logo-psd-white.png" alt="PSD Distrital de Vila Real" class="footer-logo">
+        <p class="footer-desc">Comissão Política Distrital do Partido Social Democrata de Vila Real. Trás-os-Montes e Alto Douro.</p>
+        <div class="social-list" aria-label="Redes sociais">
+          <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+          <a href="#" class="social-btn" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-h4">Navegação</h4>
+        <nav class="footer-nav">
+          <a href="index.html#sobre">A Distrital</a>
+          <a href="index.html#concelhos">Concelhos</a>
+          <a href="index.html#equipa">Órgãos Distritais</a>
+          <a href="index.html#noticias">Notícias</a>
+          <a href="index.html#agenda">Agenda</a>
+        </nav>
+      </div>
+      <div>
+        <h4 class="footer-h4">Contactos</h4>
+        <address class="footer-contacts" style="font-style:normal">
+          <div><span style="color:#fff;font-weight:600">Sede Distrital</span><br>Avenida Carvalho Araújo, Vila Real</div>
+          <a href="mailto:geral@psdvilareal.pt">geral@psdvilareal.pt</a>
+          <a href="tel:+351259000000">+351 259 000 000</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 PSD · Distrital de Vila Real. Todos os direitos reservados.</p>
+      <p>Partido Social Democrata</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const autarcas = [
+  { nome: 'José Rodrigues Paredes', concelho: 'Alijó',               foto: 'assets/autarcas/01_alijo_jose_rodrigues_paredes.png' },
+  { nome: 'António Guilherme Pires',concelho: 'Boticas',             foto: 'assets/autarcas/02_boticas_antonio_guilherme_pires.png' },
+  { nome: 'Bruno Ferreira',         concelho: 'Mondim de Basto',     foto: 'assets/autarcas/03_mondim_de_basto_bruno_ferreira.png' },
+  { nome: 'Mário Artur Lopes',      concelho: 'Murça',               foto: 'assets/autarcas/04_murca_mario_artur_lopes.png' },
+  { nome: 'José Gonçalves',         concelho: 'Peso da Régua',       foto: 'assets/autarcas/05_peso_da_regua_jose_goncalves.png' },
+  { nome: 'Jorge Mata Pires',       concelho: 'Valpaços',            foto: 'assets/autarcas/06_valpacos_jorge_mata_pires.png' },
+  { nome: 'Ana Rita Dias',          concelho: 'Vila Pouca de Aguiar', foto: 'assets/autarcas/07_vila_pouca_de_aguiar_ana_rita_dias.png' }
+];
+
+const grid = document.getElementById('autarcas-grid');
+autarcas.forEach(a => {
+  const card = document.createElement('div');
+  card.className = 'autarca-card';
+  card.innerHTML = `
+    <div class="autarca-foto">
+      <img src="${a.foto}" alt="${a.nome}" loading="lazy">
+    </div>
+    <div class="autarca-body">
+      <div class="autarca-nome">${a.nome}</div>
+      <div class="autarca-cargo">Câmara Municipal de ${a.concelho}</div>
+      <span class="psd-chip">PSD</span>
+    </div>`;
+  grid.appendChild(card);
+});
+
+// Mobile menu
+const toggle = document.querySelector('.nav-toggle');
+const mobileNav = document.getElementById('mobile-nav');
+toggle.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  toggle.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', open);
+});
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobileNav.classList.remove('open'); toggle.classList.remove('open'); toggle.setAttribute('aria-expanded','false');
+}));
+</script>
+</body>
+</html>
