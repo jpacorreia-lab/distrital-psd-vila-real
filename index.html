@@ -767,11 +767,13 @@
       .hero-h1 { font-size: clamp(44px, 11vw, 72px); }
       .form-row { grid-template-columns: 1fr; }
       .sobre-valores { grid-template-columns: 1fr 1fr; }
+      #concelhos { padding-left: 0; padding-right: 0; }
+      #concelhos .container { padding-left: 0; padding-right: 0; }
+      #concelhos .section-header { padding: 0 var(--px); }
       .concelhos-scroll-outer {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        margin: 0 calc(-1 * var(--px));
-        padding: 0 var(--px) 12px;
+        padding: 0 var(--px) 16px;
         scroll-snap-type: x mandatory;
       }
       .concelhos-scroll-outer::-webkit-scrollbar { display: none; }
@@ -781,8 +783,8 @@
         width: max-content;
       }
       .concelho-card {
-        flex: 0 0 72vw;
-        max-width: 280px;
+        flex: 0 0 75vw;
+        max-width: 290px;
         scroll-snap-align: start;
       }
     }
