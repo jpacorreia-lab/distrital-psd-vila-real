@@ -771,21 +771,23 @@
       #concelhos .container { padding-left: 0; padding-right: 0; }
       #concelhos .section-header { padding: 0 var(--px); }
       .concelhos-scroll-outer {
-        overflow-x: auto;
+        overflow-x: scroll;
         -webkit-overflow-scrolling: touch;
         padding: 0 var(--px) 16px;
         scroll-snap-type: x mandatory;
+        scrollbar-width: none;
       }
       .concelhos-scroll-outer::-webkit-scrollbar { display: none; }
       .concelhos-grid {
         display: flex;
+        flex-wrap: nowrap;
         gap: 12px;
-        width: max-content;
       }
       .concelho-card {
         flex: 0 0 75vw;
         max-width: 290px;
         scroll-snap-align: start;
+        width: 75vw;
       }
     }
     @media (max-width: 400px) {
